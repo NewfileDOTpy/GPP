@@ -1,5 +1,4 @@
 # GPP
-/*  */
 
 Game Publishing Project
 
