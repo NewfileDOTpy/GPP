@@ -1,5 +1,5 @@
 # GPP 
-<!--- --->
+
 Game Publishing Project
 
 
@@ -8,6 +8,7 @@ Game Publishing Project
 
 
 # Commit Message
+
 
 | Message | 설명 |
 | --- | --- |
