@@ -1,5 +1,7 @@
 package com.gamepublishingproject.gpp.user.dto;
 
+import com.gamepublishingproject.gpp.basket.Basket;
+import com.gamepublishingproject.gpp.library.Library;
 import lombok.Builder;
 import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
@@ -27,4 +29,8 @@ public class UserResponseDto {
     private String nickName;
 
     private Long wallet;
+
+    private Library library;
+
+    private Basket basket;
 }
