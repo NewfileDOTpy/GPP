@@ -1,7 +1,8 @@
 package com.gamepublishingproject.gpp.basket;
 
 
-import com.gamepublishingproject.gpp.user.entity.User;
+
+import com.gamepublishingproject.gpp.user.entity.Users;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,12 +21,12 @@ public class Basket {
 
 
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "USERS_ID")
+    private Users users;
 
 
-    public void setUser(User user){
-        this.user = user;
+    public void setUser(Users user){
+        this.users = user;
         if(user.getBasket() != this){
             user.setBasket(this);
         }

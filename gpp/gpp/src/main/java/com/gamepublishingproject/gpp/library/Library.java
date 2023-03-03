@@ -1,7 +1,8 @@
 package com.gamepublishingproject.gpp.library;
 
 
-import com.gamepublishingproject.gpp.user.entity.User;
+
+import com.gamepublishingproject.gpp.user.entity.Users;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,11 +22,14 @@ public class Library {
 
 
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "USERS_ID")
+    private Users user;
 
 
-    public void setUser(User user){
+
+
+
+    public void setUser(Users user){
         this.user = user;
         if(user.getLibrary() != this){
             user.setLibrary(this);

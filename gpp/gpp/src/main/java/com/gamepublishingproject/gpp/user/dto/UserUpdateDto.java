@@ -10,6 +10,8 @@ import javax.validation.constraints.NotBlank;
 @Getter
 public class UserUpdateDto {
 
+    private Long userId;
+
     @NotBlank
     private String nickName;
 
@@ -17,4 +19,8 @@ public class UserUpdateDto {
     @NotBlank
     private Long wallet;
 
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }
