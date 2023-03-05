@@ -3,6 +3,7 @@ package com.gamepublishingproject.gpp.user.controller;
 
 import com.gamepublishingproject.gpp.basket.Basket;
 import com.gamepublishingproject.gpp.library.Library;
+import com.gamepublishingproject.gpp.response.MultiResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserCreateDto;
 import com.gamepublishingproject.gpp.user.dto.UserResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
@@ -45,9 +46,10 @@ public class UserController {
                                    @RequestParam int size){
         Page<Users> pageUsers = userService.getUsers(page-1, size);
         List<Users> users = pageUsers.getContent();
-        List<UserResponseDto> userResponseDtos =
-                userMapper.UsersToUsersResponseDtos(users);
-        return ResponseEntity.ok(userResponseDtos);
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(userMapper.UsersToUsersResponseDtos(users), pageUsers),
+                HttpStatus.OK);
     }
 
 
@@ -78,7 +80,6 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
 
     }
-
 
 
 
