@@ -1,15 +1,15 @@
 package com.gamepublishingproject.gpp.game.entity;
 
+
+import com.gamepublishingproject.gpp.related.BasketGame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,5 +31,8 @@ public class Game {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "game")
+    private List<BasketGame> basketGameList = new ArrayList<>();
 
 }

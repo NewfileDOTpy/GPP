@@ -2,8 +2,9 @@ package com.gamepublishingproject.gpp.user.service;
 
 
 import com.gamepublishingproject.gpp.basket.Basket;
+import com.gamepublishingproject.gpp.game.entity.Game;
 import com.gamepublishingproject.gpp.library.Library;
-import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
+import com.gamepublishingproject.gpp.related.BasketGame;
 import com.gamepublishingproject.gpp.user.entity.Users;
 import com.gamepublishingproject.gpp.user.repository.UserRepository;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -65,11 +67,20 @@ public class UserService {
     }
 
 
+    public Users updateBasket (Long usersId, List<Game> gameList) {
 
+        Users findUser = findVerifiedUser(usersId);
 
+        gameList.stream()
+                .forEach(game -> {
+                    BasketGame basketGame = new BasketGame();
+                    basketGame.setGame(game);
+                    basketGame.setBasket(findUser.getBasket());
+                    findUser.getBasket().getBasketGameList().add(basketGame);
+                });
 
-
-
+        return userRepository.save(findUser);
+    }
 
 
 

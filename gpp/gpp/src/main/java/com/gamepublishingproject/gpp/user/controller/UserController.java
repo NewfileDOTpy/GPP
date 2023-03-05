@@ -2,8 +2,12 @@ package com.gamepublishingproject.gpp.user.controller;
 
 
 import com.gamepublishingproject.gpp.basket.Basket;
+import com.gamepublishingproject.gpp.game.entity.Game;
+import com.gamepublishingproject.gpp.game.mapper.GameMapper;
+import com.gamepublishingproject.gpp.game.service.GameService;
 import com.gamepublishingproject.gpp.library.Library;
 import com.gamepublishingproject.gpp.response.MultiResponseDto;
+import com.gamepublishingproject.gpp.user.dto.BasketAddGameDto;
 import com.gamepublishingproject.gpp.user.dto.UserCreateDto;
 import com.gamepublishingproject.gpp.user.dto.UserResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
@@ -26,14 +30,16 @@ public class UserController {
 
     private final UserMapper userMapper;
 
-    public UserController(UserService userService, UserMapper
-                          userMapper){
+    private final GameMapper gameMapper;
+
+    private final GameService gameService;
+
+    public UserController(UserService userService, UserMapper userMapper, GameMapper gameMapper, GameService gameService) {
         this.userService = userService;
         this.userMapper = userMapper;
+        this.gameMapper = gameMapper;
+        this.gameService = gameService;
     }
-
-
-
 
     @GetMapping("/{user-id}")
     public ResponseEntity getUser(@PathVariable("user-id") Long userId){
@@ -92,7 +98,7 @@ public class UserController {
 
 
     @PostMapping("/library/{user-id}")
-    public ResponseEntity addGameToLibrary (@PathVariable("user-id") Long userId, Basket basketPostDto){
+    public ResponseEntity addGameToLibrary (@PathVariable("user-id") Long userId){
         return null;
     }
 
@@ -110,8 +116,12 @@ public class UserController {
 
 
     @PostMapping("/basket/{user-id}")
-    public ResponseEntity addGameToBasket(@PathVariable("user-id") Long userId, Basket basketPostDto){
-        return null;
+    public ResponseEntity addGameToBasket(@PathVariable("user-id") Long userId, @RequestBody BasketAddGameDto basketAddGameDto){
+
+        List<Game> gameList = gameService.gameList(basketAddGameDto);
+        Users users = userService.updateBasket(userId, gameList);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

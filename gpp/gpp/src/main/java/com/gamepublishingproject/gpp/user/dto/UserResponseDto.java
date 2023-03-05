@@ -30,7 +30,7 @@ public class UserResponseDto {
 
     private Long wallet;
 
-    private Library library;
-
-    private Basket basket;
+//    private Library library;
+//
+//    private Basket basket;
 }

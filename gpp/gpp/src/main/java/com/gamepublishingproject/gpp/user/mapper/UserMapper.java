@@ -1,5 +1,7 @@
 package com.gamepublishingproject.gpp.user.mapper;
 
+import com.gamepublishingproject.gpp.basket.Basket;
+import com.gamepublishingproject.gpp.library.Library;
 import com.gamepublishingproject.gpp.user.dto.UserCreateDto;
 import com.gamepublishingproject.gpp.user.dto.UserResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
@@ -21,7 +23,6 @@ public interface UserMapper {
     UserResponseDto UserToUserResponseDto(Users user);
 
     List<UserResponseDto> UsersToUsersResponseDtos(List<Users> users);
-
 
 
 
