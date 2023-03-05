@@ -1,13 +1,13 @@
-package com.gamepublishingproject.gpp.category.response;
+package com.gamepublishingproject.gpp.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
+@Getter
 public class PageInfo {
     private int page;
     private int size;
-    private Long totalElements;
+    private long totalElements;
     private int totalPages;
 }
