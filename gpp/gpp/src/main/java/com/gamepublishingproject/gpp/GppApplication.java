@@ -10,7 +10,6 @@ public class GppApplication {
 		SpringApplication.run(GppApplication.class, args);
 	}
 
+
+
 }
-// post -> create
-// patch -> update
-// CategoryGame 클래스 삭제 (재영님이 만드심)
