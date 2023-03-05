@@ -49,6 +49,10 @@ public class Users {
     private Library library;
 
 
+    public Library getLibrary() {
+        return library;
+    }
+
     public void setBasket(Basket basket){
         this.basket = basket;
         if(basket.getUsers()!= this){
@@ -62,6 +66,4 @@ public class Users {
             library.setUser(this);
         }
     }
-
-
 }

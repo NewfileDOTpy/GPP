@@ -2,7 +2,6 @@ package com.gamepublishingproject.gpp.user.mapper;
 
 import com.gamepublishingproject.gpp.user.dto.UserCreateDto;
 import com.gamepublishingproject.gpp.user.dto.UserResponseDto;
-import com.gamepublishingproject.gpp.user.dto.UserResponseDto.UserResponseDtoBuilder;
 import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
 import com.gamepublishingproject.gpp.user.entity.Users;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-05T18:58:45+0900",
+    date = "2023-03-05T22:50:17+0900",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -53,16 +52,9 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        UserResponseDtoBuilder userResponseDto = UserResponseDto.builder();
+        UserResponseDto userResponseDto = new UserResponseDto();
 
-        userResponseDto.email( user.getEmail() );
-        userResponseDto.userName( user.getUserName() );
-        userResponseDto.nickName( user.getNickName() );
-        userResponseDto.wallet( user.getWallet() );
-        userResponseDto.library( user.getLibrary() );
-        userResponseDto.basket( user.getBasket() );
-
-        return userResponseDto.build();
+        return userResponseDto;
     }
 
     @Override
