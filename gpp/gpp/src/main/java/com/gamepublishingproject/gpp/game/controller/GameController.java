@@ -2,7 +2,7 @@ package com.gamepublishingproject.gpp.game.controller;
 
 import com.gamepublishingproject.gpp.game.dto.GameCreateDto;
 import com.gamepublishingproject.gpp.game.dto.GameUpdateDto;
-import com.gamepublishingproject.gpp.game.dto.MultiResponseDto;
+import com.gamepublishingproject.gpp.response.MultiResponseDto;
 import com.gamepublishingproject.gpp.game.entity.Game;
 import com.gamepublishingproject.gpp.game.mapper.GameMapper;
 import com.gamepublishingproject.gpp.game.service.GameService;
