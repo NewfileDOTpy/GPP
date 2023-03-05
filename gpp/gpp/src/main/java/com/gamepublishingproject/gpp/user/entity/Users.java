@@ -2,7 +2,7 @@ package com.gamepublishingproject.gpp.user.entity;
 
 
 import com.gamepublishingproject.gpp.basket.Basket;
-import com.gamepublishingproject.gpp.library.Library;
+import com.gamepublishingproject.gpp.library.entity.Library;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,10 +12,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
-@Entity
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
+@Entity(name = "USERS")
 public class Users {
 
     @Id
@@ -31,7 +31,7 @@ public class Users {
     @Column(nullable = false, unique = true)
     private String nickName;
 
-    @Column
+
     @ColumnDefault("0")
     private Long wallet;
 
@@ -49,6 +49,10 @@ public class Users {
     private Library library;
 
 
+    public Library getLibrary() {
+        return library;
+    }
+
     public void setBasket(Basket basket){
         this.basket = basket;
         if(basket.getUsers()!= this){
@@ -62,5 +66,4 @@ public class Users {
             library.setUser(this);
         }
     }
-
 }

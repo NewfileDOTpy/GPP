@@ -1,17 +1,16 @@
 package com.gamepublishingproject.gpp.user.dto;
 
 import com.gamepublishingproject.gpp.basket.Basket;
-import com.gamepublishingproject.gpp.library.Library;
+import com.gamepublishingproject.gpp.library.entity.Library;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.NoArgsConstructor;
 
 
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 public class UserResponseDto {

@@ -1,4 +1,4 @@
-package com.gamepublishingproject.gpp.category.response;
+package com.gamepublishingproject.gpp.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
