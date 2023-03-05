@@ -2,8 +2,11 @@ package com.gamepublishingproject.gpp.user.service;
 
 
 import com.gamepublishingproject.gpp.basket.Basket;
-import com.gamepublishingproject.gpp.library.Library;
-import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
+import com.gamepublishingproject.gpp.game.entity.Game;
+import com.gamepublishingproject.gpp.game.repository.GameRepository;
+import com.gamepublishingproject.gpp.game.service.GameService;
+import com.gamepublishingproject.gpp.library.entity.Library;
+import com.gamepublishingproject.gpp.related.LibraryGame;
 import com.gamepublishingproject.gpp.user.entity.Users;
 import com.gamepublishingproject.gpp.user.repository.UserRepository;
 import org.springframework.data.domain.Page;
@@ -11,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,9 +22,15 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    private final GameRepository gameRepository;
 
+    private final GameService gameService;
+
+    public UserService(UserRepository userRepository, GameRepository gameRepository, GameService gameService) {
+
+        this.gameService = gameService;
         this.userRepository = userRepository;
+        this.gameRepository = gameRepository;
     }
 
     public Users getUser(Long userId){
@@ -64,6 +74,24 @@ public class UserService {
         userRepository.delete(deleteUser);
     }
 
+    public Library getLibrary(Long userId){
+            Users findUsers = findVerifiedUser(userId);
+           Library games = findUsers.getLibrary();
+        return games;
+    }
+
+
+    public Users postLibrary(Long userId, Long gameId){
+        Users findUser = findVerifiedUser(userId);
+        Game findGame = gameService.findVerifiedGame(gameId);
+
+        LibraryGame libraryGame = new LibraryGame();
+        libraryGame.addLibrary(findUser.getLibrary());
+        libraryGame.addGame(findGame);
+        findUser.getLibrary().addLibraryGame(libraryGame);
+
+        return  userRepository.save(findUser);
+    }
 
 
 
@@ -72,13 +100,11 @@ public class UserService {
 
 
 
-
-
-    public Users findVerifiedUser(long memberId) {
-        Optional<Users> optionalMember =
-                userRepository.findById(memberId);
+    public Users findVerifiedUser(long userId) {
+        Optional<Users> optionalUsers =
+                userRepository.findById(userId);
         Users findUser =
-                optionalMember.orElse(null);
+                optionalUsers.orElse(null);
         return findUser;
     }
     private void verifyExistsEmail(String email) {
@@ -92,4 +118,6 @@ public class UserService {
 //        if (member.isPresent())
 //            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
     }
+
+
 }

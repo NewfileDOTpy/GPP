@@ -12,7 +12,6 @@ import javax.validation.constraints.NotBlank;
 public class UserCreateDto {
 
     @NotBlank
-    @Email
     private String email;
 
 

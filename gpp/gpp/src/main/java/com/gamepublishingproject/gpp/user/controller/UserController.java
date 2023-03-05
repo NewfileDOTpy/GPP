@@ -2,8 +2,11 @@ package com.gamepublishingproject.gpp.user.controller;
 
 
 import com.gamepublishingproject.gpp.basket.Basket;
-import com.gamepublishingproject.gpp.library.Library;
+import com.gamepublishingproject.gpp.game.entity.Game;
+import com.gamepublishingproject.gpp.library.entity.Library;
+import com.gamepublishingproject.gpp.related.LibraryGame;
 import com.gamepublishingproject.gpp.response.MultiResponseDto;
+import com.gamepublishingproject.gpp.response.SingleResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserCreateDto;
 import com.gamepublishingproject.gpp.user.dto.UserResponseDto;
 import com.gamepublishingproject.gpp.user.dto.UserUpdateDto;
@@ -57,6 +60,7 @@ public class UserController {
     public ResponseEntity createUser(@RequestBody UserCreateDto userCreateDto){
 
         Users user = userMapper.userCreateDtoToUser(userCreateDto);
+
         Users createdUser = userService.createUser(user);
         UserResponseDto responseDto = userMapper.UserToUserResponseDto(createdUser);
 
@@ -84,21 +88,27 @@ public class UserController {
 
 
     @GetMapping("/library/{user-id}")
-    public ResponseEntity getLibrary(@PathVariable("user-id") Long userid){
+    public ResponseEntity getLibraryGames(@PathVariable("user-id") Long userId){
 
-
-        return null;
+        Library userGames = userService.getLibrary(userId);
+        return new ResponseEntity<>(new SingleResponseDto<>(userGames), HttpStatus.OK);
     }
 
 
+
+
+
     @PostMapping("/library/{user-id}")
-    public ResponseEntity addGameToLibrary (@PathVariable("user-id") Long userId, Basket basketPostDto){
-        return null;
+    public ResponseEntity addGameToLibrary (@PathVariable("user-id") Long userId,
+                                            @RequestBody Long gameId){
+
+        userService.postLibrary(userId, gameId);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
 
     @PatchMapping("/library/{user-id}")
-    public ResponseEntity updatelibrary(@PathVariable("user-id") Long userId, Basket basketupdateDto){
+    public ResponseEntity updatelibrary(@PathVariable("user-id") Long userId){
         return null;
     }
 

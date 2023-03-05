@@ -2,6 +2,7 @@ package com.gamepublishingproject.gpp.game.service;
 
 import com.gamepublishingproject.gpp.game.entity.Game;
 import com.gamepublishingproject.gpp.game.repository.GameRepository;
+import com.gamepublishingproject.gpp.user.entity.Users;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -54,5 +55,14 @@ public class GameService {
 
     public void deleteGame(long gameId) {
         gameRepository.deleteById(gameId);
+    }
+
+
+    public Game findVerifiedGame(long gameId) {
+        Optional<Game> optionalGame =
+                gameRepository.findById(gameId);
+        Game findGmae =
+                optionalGame.orElse(null);
+        return findGmae;
     }
 }
