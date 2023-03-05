@@ -32,10 +32,6 @@ public class UserController {
     }
 
 
-    @GetMapping
-    public ResponseEntity getUsers(){
-        return null;
-    }
 
 
     @GetMapping("/{user-id}")
@@ -76,7 +72,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/user-id")
+    @DeleteMapping("/{user-id}")
     public ResponseEntity deleteUser(@PathVariable("user-id") Long userId){
         userService.deleteUser(userId);
         return new ResponseEntity(HttpStatus.OK);
@@ -86,7 +82,7 @@ public class UserController {
 
 
 
-    @GetMapping("/library/{user-id")
+    @GetMapping("/library/{user-id}")
     public ResponseEntity getLibrary(@PathVariable("user-id") Long userid){
 
 
@@ -94,31 +90,31 @@ public class UserController {
     }
 
 
-    @PostMapping("/library/{user-id")
+    @PostMapping("/library/{user-id}")
     public ResponseEntity addGameToLibrary (@PathVariable("user-id") Long userId, Basket basketPostDto){
         return null;
     }
 
 
-    @PatchMapping("/library/{user-id")
+    @PatchMapping("/library/{user-id}")
     public ResponseEntity updatelibrary(@PathVariable("user-id") Long userId, Basket basketupdateDto){
         return null;
     }
 
 
-    @GetMapping("/basket/{user-id")
+    @GetMapping("/basket/{user-id}")
     public ResponseEntity getBasket (@PathVariable("user-id") Long userid){
         return null;
     }
 
 
-    @PostMapping("/basket/{user-id")
+    @PostMapping("/basket/{user-id}")
     public ResponseEntity addGameToBasket(@PathVariable("user-id") Long userId, Basket basketPostDto){
         return null;
     }
 
 
-    @PatchMapping("/basket/{user-id")
+    @PatchMapping("/basket/{user-id}")
     public ResponseEntity updateBasket(@PathVariable("user-id") Long userId, Basket basketupdateDto){
         return null;
     }

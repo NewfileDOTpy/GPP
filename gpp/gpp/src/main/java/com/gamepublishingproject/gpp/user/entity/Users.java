@@ -41,11 +41,11 @@ public class Users {
     @Column
     private LocalDateTime modifiedTime = LocalDateTime.now();
 
-    @OneToOne(mappedBy = "USERS", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "users", cascade = CascadeType.PERSIST)
     private Basket basket;
 
 
-    @OneToOne(mappedBy = "USERS", cascade = {CascadeType.PERSIST})
+    @OneToOne(mappedBy = "users", cascade = CascadeType.PERSIST)
     private Library library;
 
 
@@ -58,7 +58,7 @@ public class Users {
 
     public void setLibrary(Library library){
         this.library = library;
-        if(library.getUser()!= this){
+        if(library.getUsers()!= this){
             library.setUser(this);
         }
     }

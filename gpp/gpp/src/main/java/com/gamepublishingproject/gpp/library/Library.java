@@ -23,14 +23,14 @@ public class Library {
 
     @OneToOne
     @JoinColumn(name = "USERS_ID")
-    private Users user;
+    private Users users;
 
 
 
 
 
     public void setUser(Users user){
-        this.user = user;
+        this.users = user;
         if(user.getLibrary() != this){
             user.setLibrary(this);
         }
