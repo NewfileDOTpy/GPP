@@ -1,4 +1,4 @@
-package com.gamepublishingproject.gpp.category.controller;
+package com.gamepublishingproject.gpp.category.exception;
 
 import lombok.Getter;
 
