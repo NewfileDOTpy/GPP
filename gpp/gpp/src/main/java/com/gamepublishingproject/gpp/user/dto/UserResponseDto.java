@@ -2,17 +2,14 @@ package com.gamepublishingproject.gpp.user.dto;
 
 import com.gamepublishingproject.gpp.basket.Basket;
 import com.gamepublishingproject.gpp.library.entity.Library;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 public class UserResponseDto {
 
 

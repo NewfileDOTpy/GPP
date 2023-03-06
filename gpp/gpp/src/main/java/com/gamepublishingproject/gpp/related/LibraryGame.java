@@ -43,8 +43,8 @@ public class LibraryGame {
 
     public void addGame(Game game){
         this.game = game;
-        if(!this.game.getLibraryGame().contains(this)){
-            this.game.getLibraryGame().add(this);
+        if(!this.game.getLibraryGameList().contains(this)){
+            this.game.getLibraryGameList().add(this);
         }
     }
 

@@ -2,6 +2,8 @@ package com.gamepublishingproject.gpp.game.entity;
 
 
 import com.gamepublishingproject.gpp.related.BasketGame;
+import com.gamepublishingproject.gpp.related.GameCategory;
+import com.gamepublishingproject.gpp.related.LibraryGame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,5 +36,11 @@ public class Game {
 
     @OneToMany(mappedBy = "game")
     private List<BasketGame> basketGameList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "game")
+    private List<LibraryGame> libraryGameList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "game")
+    private List<GameCategory> gameCategoryList = new ArrayList<>();
 
 }

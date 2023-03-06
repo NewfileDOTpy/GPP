@@ -3,7 +3,8 @@ package com.gamepublishingproject.gpp.user.service;
 
 import com.gamepublishingproject.gpp.basket.Basket;
 import com.gamepublishingproject.gpp.game.entity.Game;
-import com.gamepublishingproject.gpp.library.Library;
+
+import com.gamepublishingproject.gpp.library.entity.Library;
 import com.gamepublishingproject.gpp.related.BasketGame;
 import com.gamepublishingproject.gpp.user.entity.Users;
 import com.gamepublishingproject.gpp.user.repository.UserRepository;
