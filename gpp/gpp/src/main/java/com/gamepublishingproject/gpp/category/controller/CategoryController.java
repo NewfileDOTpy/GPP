@@ -4,7 +4,7 @@ import com.gamepublishingproject.gpp.category.dto.CategoryDto;
 import com.gamepublishingproject.gpp.category.entity.Category;
 import com.gamepublishingproject.gpp.category.mapper.CategoryMapper;
 import com.gamepublishingproject.gpp.category.repository.CategoryRepository;
-import com.gamepublishingproject.gpp.category.response.SingleResponseDto;
+import com.gamepublishingproject.gpp.response.SingleResponseDto;
 import com.gamepublishingproject.gpp.category.service.CategoryService;
 import com.gamepublishingproject.gpp.category.utils.UriCreator;
 import com.gamepublishingproject.gpp.response.MultiResponseDto;

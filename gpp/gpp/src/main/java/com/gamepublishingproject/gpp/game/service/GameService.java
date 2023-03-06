@@ -2,6 +2,7 @@ package com.gamepublishingproject.gpp.game.service;
 
 import com.gamepublishingproject.gpp.game.entity.Game;
 import com.gamepublishingproject.gpp.game.repository.GameRepository;
+import com.gamepublishingproject.gpp.user.dto.BasketAddGameDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -50,6 +53,13 @@ public class GameService {
     public Page<Game> findGames(int page, int size) {
             return gameRepository.findAll(PageRequest.of(page, size,
                     Sort.by("gameId").descending()));
+    }
+
+    public List<Game> gameList(BasketAddGameDto basketAddGameDto) {
+        List<Game> games = basketAddGameDto.getGameIdList().stream()
+                .map(game -> findGame(game.getGameId()))
+                .collect(Collectors.toList());
+        return games;
     }
 
     public void deleteGame(long gameId) {

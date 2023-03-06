@@ -1,19 +1,15 @@
 package com.gamepublishingproject.gpp.user.dto;
 
 import com.gamepublishingproject.gpp.basket.Basket;
-import com.gamepublishingproject.gpp.library.Library;
-import lombok.Builder;
-import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.gamepublishingproject.gpp.library.entity.Library;
+import lombok.*;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
+@Setter
 public class UserResponseDto {
 
 
@@ -30,7 +26,7 @@ public class UserResponseDto {
 
     private Long wallet;
 
-    private Library library;
-
-    private Basket basket;
+//    private Library library;
+//
+//    private Basket basket;
 }

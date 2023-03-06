@@ -1,6 +1,6 @@
 package com.gamepublishingproject.gpp.related;
 
-import com.gamepublishingproject.gpp.basket.Basket;
+import com.gamepublishingproject.gpp.category.entity.Category;
 import com.gamepublishingproject.gpp.game.entity.Game;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,18 +12,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BasketGame {
+public class GameCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long BasketGame;
-
-    @ManyToOne
-    @JoinColumn(name = "BASKET_ID")
-    private Basket basket;
+    private Long gameCategoryId;
 
     @ManyToOne
     @JoinColumn(name = "GAME_ID")
     private Game game;
 
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category;
 }
