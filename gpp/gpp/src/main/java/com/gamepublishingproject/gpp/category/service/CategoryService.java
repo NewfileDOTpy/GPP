@@ -50,13 +50,13 @@ public class CategoryService {
         Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
         Category findCategory =
                 optionalCategory.orElseThrow(() ->
-                        new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+                        new BusinessLogicException(ExceptionCode.CATEGORY_NOT_FOUND));
         return findCategory;
     }
 
     private void verifyExistCategory(String genre){
         Optional<Category> category = categoryRepository.findByGenre(genre);
         if(category.isPresent())
-            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+            throw new BusinessLogicException(ExceptionCode.CATEGORY_EXISTS);
     }
 }
