@@ -1,6 +1,6 @@
 package com.gamepublishingproject.gpp.category.service;
 
-import com.gamepublishingproject.gpp.category.controller.ExceptionCode;
+import com.gamepublishingproject.gpp.category.exception.ExceptionCode;
 import com.gamepublishingproject.gpp.category.entity.Category;
 import com.gamepublishingproject.gpp.category.exception.BusinessLogicException;
 import com.gamepublishingproject.gpp.category.repository.CategoryRepository;

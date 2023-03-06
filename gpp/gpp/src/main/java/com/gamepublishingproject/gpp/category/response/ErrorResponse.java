@@ -1,6 +1,6 @@
 package com.gamepublishingproject.gpp.category.response;
 
-import com.gamepublishingproject.gpp.category.controller.ExceptionCode;
+import com.gamepublishingproject.gpp.category.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
